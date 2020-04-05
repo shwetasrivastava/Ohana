@@ -1,0 +1,33 @@
+{
+  "name": "ohana",
+  "version": "1.0.0",
+  "description": "ORM for SAP HANA for node.js",
+  "main": "ohana.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shwetasrivastava/Ohana.git"
+  },
+  "keywords": [
+    "ORM",
+    "SAP",
+    "HANA",
+    "DB",
+    "HANADB",
+    "NODE.JS",
+    "node.js",
+    "hana",
+    "db"
+  ],
+  "author": "Shweta Srivastava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shwetasrivastava/Ohana/issues"
+  },
+  "homepage": "https://github.com/shwetasrivastava/Ohana#readme",
+  "dependencies": {
+    "@sap/hana-client": "^2.4.191"
+  }
+}
