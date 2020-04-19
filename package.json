@@ -1,8 +1,8 @@
 {
-  "name": "ohana",
-  "version": "1.0.0",
+  "name": "ohana-node-orm",
+  "version": "1.2.0",
   "description": "ORM for SAP HANA for node.js",
-  "main": "ohana.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,5 +29,6 @@
   "homepage": "https://github.com/shwetasrivastava/Ohana#readme",
   "dependencies": {
     "@sap/hana-client": "^2.4.191"
-  }
+  },
+  "devDependencies": {}
 }

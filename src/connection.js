@@ -8,6 +8,7 @@ const connect = (params) => {
                 reject(err);
             } else {
                 console.log('Connected to hana db.');
+                global.connect = conn;
                 resolve();
             }
           });
@@ -27,26 +28,7 @@ const disconnect = () => {
     });
 }
 
-const ohana = (table) => {
-    this.table = table;
-
-    // ORM functions
-    this.findById = (id) => {
-        return new Promise((resolve, reject) => {
-            const sql = `SELECT * FROM ? WHERE id = ?`;
-            conn.exec(sql, [this.table, id], function (err, rows) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(rows);
-                }
-            });
-        });
-    }
-}
-
 module.exports = {
     connect,
-    disconnect,
-    ohana
+    disconnect
 }
