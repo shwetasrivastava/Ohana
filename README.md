@@ -1,5 +1,3 @@
-# Ohana - SAP HANA ORM for Node.js
-
 <p align="center">
   <a href="https://github.com/shwetasrivastava/Ohana">
     <img alt="Ohana - SAP HANA ORM for Node.js" src="https://user-images.githubusercontent.com/5300686/79893777-2acc2d80-8422-11ea-8f4a-4b8d1f620501.png" />
