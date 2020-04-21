@@ -1,7 +1,24 @@
-# Ohana
+# Ohana - SAP HANA ORM for Node.js
 
-ORM for SAP HANA for node.js
+<p align="center">
+  <a href="https://github.com/shwetasrivastava/Ohana">
+    <img alt="Ohana - SAP HANA ORM for Node.js" src="https://user-images.githubusercontent.com/5300686/79893777-2acc2d80-8422-11ea-8f4a-4b8d1f620501.png" />
+  </a>
+</p>
 
+<a href="https://www.npmjs.com/package/ohana-node-orm">
+    <img src="https://img.shields.io/npm/v/ohana-node-orm" alt="Version">
+</a>
+
+ <a href="https://www.npmjs.com/package/ohana-node-orm">
+    <img src="https://img.shields.io/npm/dw/ohana-node-orm" alt="Total Downloads">
+</a>
+
+ <a href="https://www.npmjs.com/package/ohana-node-orm">
+    <img src="https://img.shields.io/npm/l/ohana-node-orm" alt="License">
+  </a>
+
+ 
 ### How to use it?
 - Install from npm
 ```
@@ -38,7 +55,7 @@ const user = new ohana('users'); // new ohana('table_name');
 module.exports = user;
 ```
 
-- Use model
+- Use model in your controller
 ```
 const users = await user.find();
 ```
@@ -50,10 +67,58 @@ const users = await user.find();
 - Delete
 
 ### Available methods
-- find()
-- findOne()
-- create()
-- update()
-- delete()
-- insert()
-- insertBatch()
+- find() 
+````
+    const results = await user.find();
+````
+
+- findOne(conditions) 
+````
+    const results = await user.findOne({
+        ‘USER_ID’: 101,
+        ‘STATUS’: 2
+    });
+````
+- update(conditions, values)
+````
+    const results = await user.update({
+        ‘USER_ID’: 101,
+        ‘STATUS’: 2
+    },
+    {
+        ‘mobile_no’: “xxxx-xxx-xxx”
+    });
+````
+- delete(conditions)
+````
+    const results = await user.delete({
+        ‘USER_ID’: 101
+    });
+````
+- insert(data) 
+````
+    const results = await user.insert({
+        ‘USER_ID’: 101,
+        'USER_NAME': "abc",
+        'PASSWORD': "xxxxxxxx",
+        ‘EMAIL’: 'abc@gmail.com',
+        'ADDRESS': 'A-4,Block-6, Street-9,Hagen-astric'
+    });
+````
+- insertBatch(data)
+````
+    const results = await user.insertBatch([{
+        ‘USER_ID’: 101,
+        'USER_NAME': "abc",
+        'PASSWORD': "xxxxxxxx",
+        ‘EMAIL’: 'abc@gmail.com',
+        'ADDRESS': 'A-4,Block-6, Street-9,Hagen-astric'
+        },
+        {       
+        ‘USER_ID’: 102,
+        'USER_NAME': "abc2",
+        'PASSWORD': "xxxxxxxx",
+        ‘EMAIL’: 'abc2@gmail.com',
+        'ADDRESS': 'A-4,Block-7, Street-10,Hagen'
+        }]);
+````
