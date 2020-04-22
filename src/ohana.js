@@ -62,7 +62,6 @@ const ohana = function (table) {
         for (let [key, value] of Object.entries(conditions)) {
             if (i === 0) {
                 sql = sql + ` WHERE ${key} = ?`;
-                console.log(sql);
             } else {
                 sql = sql + ` AND ${key} = ?`
             }
@@ -108,7 +107,6 @@ const ohana = function (table) {
 
     this.insert = function (data) {
         let sql = `INSERT INTO ${this.table} (${Object.keys(data)}) VALUES(${Object.values(data)})`;
-        console.log(sql);
         return new Promise((resolve, reject) => {
             connect.exec(sql, [], function (err, rows) {
                 if (err) {
@@ -150,16 +148,13 @@ const ohana = function (table) {
                 ...conditions,
                 ...values
             }
-            console.log(data);
             let result_insert = await this.insert(data);
-            console.log(result_insert);
             return result_insert;
         }
     }
 
     this.raw = async function (statement) {
         let sql = await statement;
-        console.log(sql);
         return new Promise((resolve, reject) => {
             connect.exec(sql, function (err, rows) {
                 if (err) {
@@ -173,7 +168,6 @@ const ohana = function (table) {
 
     this.updateOrCreate = async function (conditions, values) {
         let result = await this.update(conditions, values);
-        console.log("result",result);
         if (result) {
             return result;
         } else if (result === 0) {
@@ -181,9 +175,7 @@ const ohana = function (table) {
                 ...conditions,
                 ...values
             };
-            console.log(data);
             let result_create = await this.insert(data);
-            console.log("result_create",result_create);
             return result_create;
         }
     }
