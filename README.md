@@ -4,6 +4,8 @@
   </a>
 </p>
 
+NOTE: Ohana is a work in progress and this README will update as progress is made
+
 <a href="https://www.npmjs.com/package/ohana-node-orm">
     <img src="https://img.shields.io/npm/v/ohana-node-orm" alt="Version">
 </a>
