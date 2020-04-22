@@ -42,7 +42,7 @@ const ohana = function (table) {
         });
     }
 
-    this.update = function(conditions, values) {
+    this.update = function (conditions, values) {
         let sql = `UPDATE ${this.table}`;
         let index = 0;
         let i = 0;
@@ -51,7 +51,6 @@ const ohana = function (table) {
         for (let [key, value] of Object.entries(values)) {
             if (index === 0) {
                 sql = sql + ` SET ${key} = ?`;
-                console.log(sql);
             } else {
                 sql = sql + ` ,${key} = ?`
             }
@@ -70,7 +69,7 @@ const ohana = function (table) {
             i++;
             arguments.push(value);
         }
-        
+
         return new Promise((resolve, reject) => {
             connect.exec(sql, arguments, function (err, rows) {
                 if (err) {
@@ -82,7 +81,7 @@ const ohana = function (table) {
         });
     }
 
-    this.delete = function(conditions) {
+    this.delete = function (conditions) {
         let sql = `DELETE FROM ${this.table}`;
         let arguments = [];
         let index = 0;
@@ -107,8 +106,9 @@ const ohana = function (table) {
         });
     }
 
-    this.insert = function(data) {
+    this.insert = function (data) {
         let sql = `INSERT INTO ${this.table} (${Object.keys(data)}) VALUES(${Object.values(data)})`;
+        console.log(sql);
         return new Promise((resolve, reject) => {
             connect.exec(sql, [], function (err, rows) {
                 if (err) {
@@ -120,11 +120,11 @@ const ohana = function (table) {
         });
     }
 
-    this.batchInsert = function(data) {
+    this.batchInsert = function (data) {
         let valuesPlaceHolder = new Array(Object.keys(data[0]).length).fill('?').join();
-        let sql = `INSERT INTO ${this.table}(${Object.keys(data[0])}) VALUES(${valuesPlaceHolder})`;
+        let sql = `INSERT INTO ${this.table}("${Object.keys(data[0])}") VALUES('${valuesPlaceHolder}')`;
         let arguments = [];
-        for(let i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             arguments.push(Object.values(data[i]));
         }
 
@@ -139,6 +139,55 @@ const ohana = function (table) {
             });
         });
     }
+
+    this.findOneOrCreate = async function (conditions, values) {
+        let result = await this.findOne(conditions);
+        if (result) {
+            return result;
+        }
+        else if (!result) {
+            let data = {
+                ...conditions,
+                ...values
+            }
+            console.log(data);
+            let result_insert = await this.insert(data);
+            console.log(result_insert);
+            return result_insert;
+        }
+    }
+
+    this.raw = async function (statement) {
+        let sql = await statement;
+        console.log(sql);
+        return new Promise((resolve, reject) => {
+            connect.exec(sql, function (err, rows) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+            });
+        });
+    }
+
+    this.updateOrCreate = async function (conditions, values) {
+        let result = await this.update(conditions, values);
+        console.log("result",result);
+        if (result) {
+            return result;
+        } else if (result === 0) {
+            let data = {
+                ...conditions,
+                ...values
+            };
+            console.log(data);
+            let result_create = await this.insert(data);
+            console.log("result_create",result_create);
+            return result_create;
+        }
+    }
+
 }
 
 module.exports = ohana;
