@@ -36,7 +36,6 @@ module.exports = function findOne(column_name,conditions) {
             }
             index++;
             arguments.push(value);
-            console.log(arguments);
         }
     }
 

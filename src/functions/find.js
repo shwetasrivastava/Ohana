@@ -39,7 +39,6 @@ module.exports = function find(column_name, conditions) {
             }
             index++;
             arguments.push(value);
-            console.log(arguments);
         }
     }
     

@@ -61,23 +61,59 @@ const users = await user.find();
 ```
 
 ### Supported operations
-- Create
-- Read
-- Update
-- Delete
+
+- find(column_name, conditions)
+- findOne(column_name,conditions)
+- insert(data)
+- destroy(conditions)
+- batchInsert(data)
+- update(conditions, values)
+- updateOrCreate(conditions, values)
+- avg(column_name, conditions)
+- count(column_name, conditions)
+- destroy(conditions)
+- findOneOrCreate(conditions, values)
+- max(column_name, conditions)
+- min(column_name, conditions)
+- raw(statement)
+- sum(column_name, conditions)
 
 ### Available methods
-- find() 
+- find(column_names,condition) 
 ````
-    const results = await user.find();
+  - find with coulmn name and condition , with parameters as array & objects repectively
+    const results = await users.find(["USER_ID","EMAIL_ID"],{"CITY":"Benagaluru","SUB-AREA":"MG ROAD"});
+
+  -  find all the records with column name specified in an array
+     const results = await users.find(["USER_ID","EMAIL_ID","CITY"]);               
+
+  -  find records with condition passed in an object
+     const results = await users.find({"CITY": "Bengaluru"})
+
+  -  find all the records with no condition
+     const results = await users.find()
+
+
 ````
 
-- findOne(conditions) 
+- findOne(column_name,conditions) - returns first & one matched record
 ````
+  - findOne with column_name amd conditions  
+    const results = await user.findOne(["USER_ID"],{
+        ‘USER_ID’: 101,
+        ‘STATUS’: 2
+    }); 
+
+  - findOne with conditions  
     const results = await user.findOne({
         ‘USER_ID’: 101,
         ‘STATUS’: 2
-    });
+    }); 
+
+  - findOne without passing any param
+    const results = await user.findOne(); 
+
+
 ````
 - update(conditions, values)
 ````
@@ -89,9 +125,9 @@ const users = await user.find();
         ‘mobile_no’: “xxxx-xxx-xxx”
     });
 ````
-- delete(conditions)
+- destroy(conditions)
 ````
-    const results = await user.delete({
+    const results = await user.destroy({
         ‘USER_ID’: 101
     });
 ````

@@ -1,6 +1,6 @@
 {
   "name": "ohana-node-orm",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "ORM for SAP HANA for node.js",
   "main": "index.js",
   "scripts": {
