@@ -12,7 +12,10 @@
             throw 'keys or values not passed';
         }
         const keys = Object.keys(data).map((key) => { return '"' + key + '"' });
-        const values = Object.values(data);
+        const values = Object.values(data).map(value => {
+            if(typeof value === "string" && !!value) return `'${value}'`;
+            return value;
+        });
         let sql = `INSERT INTO ${this.table} (${keys}) VALUES(${values})`;
         return new Promise((resolve, reject) => {
             connect.exec(sql, [], function (err, rows) {
