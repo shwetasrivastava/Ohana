@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var _ = require('underscore');
 
 /** 
 * 
@@ -22,7 +22,6 @@ module.exports = function sum(column_name, conditions) {
     if (conditions && _.isObject(conditions)) {
         for (let [key, value] of Object.entries(conditions)) {
             key = '"' + key + '"';
-            console.log(key);
             if (index === 0) {
                 sql = sql + ` WHERE ${key} = ?`;
             } else {

@@ -1,4 +1,4 @@
-    var _ = require('lodash');
+    var _ = require('underscore');
     /**
      * 
      * finds and returns the first record using given conditions if record exists

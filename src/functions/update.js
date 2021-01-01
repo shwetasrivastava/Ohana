@@ -1,4 +1,6 @@
-     /**
+    var _ = require('underscore');
+
+    /**
      * 
      * Updates records that matches the specified conditions with given values
      * 
@@ -7,7 +9,6 @@
      * 
      */
     module.exports = function update(conditions, values) {
-
         if (_.isUndefined(conditions)) {
             throw 'Conditions are undefined.';
         }
@@ -55,7 +56,6 @@
             i++;
             arguments.push(value);
         }
-
         return new Promise((resolve, reject) => {
             connect.exec(sql, arguments, function (err, rows) {
                 if (err) {

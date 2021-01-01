@@ -8,8 +8,9 @@
      * @param {object} values
      * 
      */
-     module.exports = async function updateOrCreate(conditions, values) {
+     var _ = require('underscore');
 
+     module.exports = async function updateOrCreate(conditions, values) {
         if (_.isUndefined(conditions) || _.isEmpty(values) || !_.isObject(values)) {
             throw new Error('conditions || keys || values is undefined');
         }

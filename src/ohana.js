@@ -1,6 +1,6 @@
-var _ = require('lodash');
+var _ = require('underscore');
 
-const {findOne, find, count, sum, raw, max, min, avg, update, insert, destroy, batchInsert ,findOneOrCreate, updateOrCreate} = require('./functions');
+const {findOne, find, count, sum, raw, max, min, avg, update, insert, destroy, batchinsert ,findOneOrCreate, updateOrCreate} = require('./functions');
 
 const ohana = function (table) {
 
@@ -23,7 +23,7 @@ const ohana = function (table) {
     this.insert = insert;
     this.destroy = destroy;
     this.findOne = findOne;
-    this.batchInsert = batchInsert;
+    this.batchInsert = batchinsert;
     this.findOneOrCreate = findOneOrCreate;
     this.updateOrCreate = updateOrCreate;
 }
