@@ -81,7 +81,7 @@ const users = await user.find();
 ### Available methods
 - find(column_names,condition) 
 ````
-  - find with coulmn name and condition , with parameters as array & objects repectively
+  - find with coulmn name and condition ,with parameters as array & objects repectively
     const results = await users.find(["USER_ID","EMAIL_ID"],{"CITY":"Benagaluru","SUB-AREA":"MG ROAD"});
 
   -  find all the records with column name specified in an array
@@ -95,7 +95,6 @@ const users = await user.find();
 
 
 ````
-
 - findOne(column_name,conditions) - returns first & one matched record
 ````
   - findOne with column_name amd conditions  
@@ -115,7 +114,7 @@ const users = await user.find();
 
 
 ````
-- update(conditions, values)
+- update(conditions, values) 
 ````
     const results = await user.update({
         ‘USER_ID’: 101,
@@ -125,36 +124,41 @@ const users = await user.find();
         ‘mobile_no’: “xxxx-xxx-xxx”
     });
 ````
+
+````
+- updateOrCreate(conditions,values)
+````
+   const results = await demo.updateOrCreate({
+            'NAME': 'Nawel'
+        },
+        {   
+            'ID': 8,
+            'CITY': 'Perth',
+            'COUNTRY': 'Australia'
+        });
+````
 - destroy(conditions)
 ````
     const results = await user.destroy({
-        ‘USER_ID’: 101
+        'USER_ID': 101
     });
 ````
 - insert(data) 
 ````
     const results = await user.insert({
-        ‘USER_ID’: 101,
-        'USER_NAME': "abc",
-        'PASSWORD': "xxxxxxxx",
-        ‘EMAIL’: 'abc@gmail.com',
-        'ADDRESS': 'A-4,Block-6, Street-9,Hagen-astric'
+        'ID': 14,
+        'NAME': 'Karen'
     });
 ````
 - insertBatch(data)
 ````
-    const results = await user.insertBatch([{
-        ‘USER_ID’: 101,
-        'USER_NAME': "abc",
-        'PASSWORD': "xxxxxxxx",
-        ‘EMAIL’: 'abc@gmail.com',
-        'ADDRESS': 'A-4,Block-6, Street-9,Hagen-astric'
-        },
-        {       
-        ‘USER_ID’: 102,
-        'USER_NAME': "abc2",
-        'PASSWORD': "xxxxxxxx",
-        ‘EMAIL’: 'abc2@gmail.com',
-        'ADDRESS': 'A-4,Block-7, Street-10,Hagen'
-        }]);
+    const results = await demo.batchInsert([
+            {
+                'ID': 14,
+                'NAME': 'Karen'
+            },{
+                'ID': 15,
+                'NAME': 'Bill'
+            }
+    ]);
 ````
