@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var _ = require('underscore');
 
 /** 
 * Returns count of all the records by specified conditions

@@ -1,8 +1,8 @@
-var _ = require('lodash');
+var _ = require('underscore');
 
 /** 
 * 
-* returns average of the records by specified conditions
+* returns average of the records by specified condition
 * @param {object} column_name
 * @param {object} conditions
 * 
@@ -23,7 +23,6 @@ module.exports = function avg(column_name, conditions) {
     if (conditions && _.isObject({ conditions })) {
         for (let [key, value] of Object.entries(conditions)) {
             key = '"' + key + '"';
-            console.log(key);
             if (index === 0) {
                 sql = sql + ` WHERE ${key} = ?`;
             } else {
@@ -31,10 +30,8 @@ module.exports = function avg(column_name, conditions) {
             }
             index++;
             arguments.push(value);
-            console.log(arguments);
         }
     }
-    console.log(sql);
     return new Promise((resolve, reject) => {
         connect.exec(sql, arguments, function (err, rows) {
             if (err) {
