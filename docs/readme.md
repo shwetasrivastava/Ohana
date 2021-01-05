@@ -20,12 +20,15 @@ NOTE: Ohana is a work in progress and this README will update as progress is mad
 
  
 ### How to use it?
+
 - Install from npm
-```
-    npm i ohana-node-orm
-```
+
+````
+npm i ohana-node-orm
+````
 
 - Setup the connection
+
 ```
 const {connection} = require('ohana-node-orm');
 
@@ -44,11 +47,12 @@ connection.connect(connectionParams)
 .catch((error) => {
     console.log('Error', error);
 })
+```
 
-or
+!> **Important** while using this pacakge at SAP WEB IDE provide the connection params as below:-.
 
-while using this pacakge at SAP WEB IDE provide the connection params as below:-
 
+````
 const connectionParams = {
     host: host,
     port: port,
@@ -56,26 +60,30 @@ const connectionParams = {
     password: password,
     currentSchema: schema // Here
 };
+````
 
-The parameters are same except while using at SAP WEB IDE we provide currentSchema: schema
-```
+?> **Tip** The parameters are same except while using at SAP WEB IDE we provide currentSchema: schema
 
 - Create a Model
-```
+
+````
 const {ohana} = require('ohana-node-orm');
 
 const user = new ohana('users'); // new ohana('table_name');
 
 module.exports = user;
-```
+````
 
 - Use model in your controller with the choice of your function
+
 ```
 eg. We are using "user" model with find() on it 
 
 const users = await user.find();
 
 ```
+
+---
 
 ### Supported operations
 
@@ -94,7 +102,11 @@ const users = await user.find();
 - raw(statement)
 - sum(column_name, conditions)
 
+
+---
+
 ### Available methods
+
 - find(column_names,condition) 
 ````
   - find with coulmn name and condition ,with parameters as array & objects repectively
@@ -108,9 +120,8 @@ const users = await user.find();
 
   -  find all the records with no condition
      const results = await users.find()
-
-
 ````
+
 - findOne(column_name,conditions) - returns first & one matched record
 ````
   - findOne with column_name amd conditions  
@@ -127,10 +138,9 @@ const users = await user.find();
 
   - findOne without passing any param
     const results = await user.findOne(); 
-
-
 ````
-- update(conditions, values)  - update based on conditions and values to be updated
+
+-  update(conditions, values)  - update based on conditions and values to be updated
 ````
     const results = await user.update({
         ‘USER_ID’: 101,
@@ -233,14 +243,18 @@ const users = await user.find();
     );
 ````
 - sum(column_name, conditions) - return the sum of the column name; based on the conditions (optional).
-
 ````
     const results = await demo.sum(
-        'ID',
-        {
-            'NAME': 'Shweta'
-        }
+          'ID',
+              {
+                  'NAME': 'Shweta'
+              }
     );
 ````
+---
+
+:snowflake:  Happy Coding :snowflake:
+
+
 
 
