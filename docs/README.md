@@ -239,7 +239,7 @@ const users = await user.find();
 - raw(statement) - run any sql statement with raw, pass the raw SQL statement. 
 ````
     const results = await demo.raw(
-         'SELECT * FROM "SSRIVA"."DEMO.TABLE::TEST.DB";'
+         'SELECT * FROM "SHWETA"."DEMO.TABLE::TEST.DB";'
     );
 ````
 - sum(column_name, conditions) - return the sum of the column name; based on the conditions (optional).
